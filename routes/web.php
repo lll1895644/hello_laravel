@@ -29,3 +29,8 @@ Route::post('login','SessionController@store')->name('login');
 Route::delete('loginout','SessionController@destroy')->name('loginout');
 
 Route::get('signup/confirm/{token}','UsersController@confirmEmail')->name('confirm_email');
+
+Route::get('passport/reset','Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('passport/email','Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('passport/reset/{token}','Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('passport/reset','Auth\ResetPasswordController@reset')->name('password.update');
